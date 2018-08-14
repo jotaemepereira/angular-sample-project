@@ -1,0 +1,37 @@
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Max. Capacity
+        </th>
+        <th class="actions">
+          Click To Check Sub Zones
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let zone of zones; let i = index">
+      <tr (click)="showSubZones(i)">
+        <td>{{zone.Name}}</td>
+        <td>{{zone.MaxCapacity}}</td>
+        <td class="actions"><span class="chevron glyphicon glyphicon-menu-down" [ngClass]="{'chevron-rotate': expanded[i]}" aria-hidden="true"></span>
+        </td>
+      </tr>
+      <tr [ngClass]="{'hidden': !expanded[i]}" class="tr-details">
+        <td colspan="2">
+          <div class="tr-details-subtitle">Sub-zones</div>
+          <table>
+            <tr *ngFor="let subZone of zone.SubZones">
+              <td>
+                <a>{{subZone.Name}}</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

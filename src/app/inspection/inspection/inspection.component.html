@@ -1,0 +1,47 @@
+<section>
+  <header *ngIf="vehicle">
+    <h1>{{vehicle.Brand}} {{vehicle.Model}} {{vehicle.Year}}</h1>
+    <p>VIN: {{vehicle.VIN}} - Color: {{vehicle.Color}} - Type: {{vehicle.Type}}</p>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Date
+        </th>
+        <th>
+          Place
+        </th>
+        <th>
+          User
+        </th>
+        <th class="actions">
+          Click To Check Damages
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let inspection of inspectionList; let i = index">
+      <tr (click)="showDamages(i)">
+        <td>{{inspection.Date|date:'medium'}}</td>
+        <td>{{inspection.Place}}</td>
+        <td>{{inspection.User.Username}}</td>
+        <td class="actions"><span class="chevron glyphicon glyphicon-menu-down" [ngClass]="{'chevron-rotate': expanded[i]}" aria-hidden="true"></span>
+        </td>
+      </tr>
+      <tr [ngClass]="{'hidden': !expanded[i]}" class="tr-details">
+        <td colspan="2">
+          <div class="tr-details-subtitle">Damages</div>
+          <table>
+            <tr *ngFor="let damage of inspection.Damages">
+              <td>
+                <img  style="max-width: 200px; max-height: 200px;" [src]="damage.DamageUrl"/>
+              </td>
+              <td> {{damage.Description}} </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button style="margin-top: 40px; position: absolute; right: 0px; padding: 10px; margin-right: 40px;" type="submit" (click)="createInspection()">Create inspection</button>
+</section>

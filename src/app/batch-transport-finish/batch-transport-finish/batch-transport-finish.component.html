@@ -1,0 +1,28 @@
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Number of batches
+        </th>
+        <th>
+          Carrier Name
+        </th>
+        <th>
+          Start Date
+        </th>
+        <th>
+          Finish transport?
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let batch of batches; let i = index">
+      <tr>
+        <td>{{batch.Batches.length}}</td>
+        <td>{{batch.Carrier.Name}}</td>
+        <td>{{batch.StartDate|date:'medium'}}</td>
+        <td><a (click)="finishBatch(i)">Finish transport</a></td>
+      </tr>
+    </tbody>
+  </table>
+</section>

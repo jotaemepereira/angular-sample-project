@@ -1,0 +1,42 @@
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Creator
+        </th>
+        <th class="actions">
+          Click To Show Vehicles
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let batch of batches; let i = index">
+      <tr (click)="showVehicles(i)">
+        <td>{{batch.Name}}</td>
+        <td>{{batch.Description}}</td>
+        <td>{{batch.Creator.Username}}</td>
+        <td class="actions"><span class="chevron glyphicon glyphicon-menu-down" [ngClass]="{'chevron-rotate': expanded[i]}" aria-hidden="true"></span>
+        </td>
+      </tr>
+      <tr [ngClass]="{'hidden': !expanded[i]}" class="tr-details">
+        <td colspan="2">
+          <div class="tr-details-subtitle">Vehicles</div>
+          <table>
+            <tr *ngFor="let vehicle of batch.Vehicles">
+              <td>
+                <a>{{vehicle.Brand}} - {{vehicle.Model}} - {{vehicle.VIN}}</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button *ngIf="!isCarrier" style="margin-top: 60px; position: absolute; right: 0px; padding: 10px; margin-right: 40px;" type="submit" (click)="createBatch()">Create batch</button>
+</section>

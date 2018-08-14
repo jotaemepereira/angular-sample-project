@@ -1,0 +1,80 @@
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          VIN
+        </th>
+        <th>
+          Brand
+        </th>
+        <th>
+          Model
+        </th>
+        <th>
+          Year
+        </th>
+        <th>
+          Color
+        </th>
+        <th>
+          Status
+        </th>
+        <th *ngIf="!showSell">
+          Inspections
+        </th>
+        <th *ngIf='showAddToBatch'>
+          Add to batch?
+        </th>
+        <th *ngIf='showMoveZone'>
+          Current zone
+        </th>
+        <th *ngIf='showMoveZone'>
+          Move to zone
+        </th>
+        <th *ngIf='showSell'>
+          Sell
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let vehicle of vehiclesList; let i = index">
+      <tr>
+        <td>{{vehicle.VIN}}</td>
+        <td>{{vehicle.Brand}}</td>
+        <td>{{vehicle.Model}}</td>
+        <td>{{vehicle.Year}}</td>
+        <td>{{vehicle.Color}}</td>
+        <td><b>{{getStatus(vehicle.State)}}</b></td>
+        <td *ngIf="!showSell" (click)="goToInspection(vehicle)"><img src="../../../assets/car-inspection.png"/></td>
+        <td *ngIf='showAddToBatch'>
+          <input *ngIf="vehicle.State == 0 || vehicle.State == 1" type="checkbox" [(ngModel)]="selected[i]">
+        </td>
+        <td *ngIf='showMoveZone'>
+          {{vehicle.ZoneName}}
+        </td>
+        <td *ngIf='showMoveZone'>
+          <input type="checkbox" [(ngModel)]="selectedZones[i]">
+        </td>
+        <td *ngIf='showSell'>
+          <button *ngIf="vehicle.State == 5" type="button" class="btn btn-success btn-xs" (click)="sellCar(vehicle.VehicleId)">
+            <span class="glyphicon glyphicon-ok"></span> Sell
+          </button>
+        </td>
+      </tr>
+    </tbody>
+
+    <div *ngIf='showMoveZone'>
+      <select #selectedZone style="margin-top: 20px; position: absolute; right: 0px; padding: 10px; margin-right: 40px;" name="zone">
+        <option *ngFor="let subZone of subZones" value={{subZone.ZoneId}}>{{subZone.ParentName}} - {{subZone.Name}}</option>
+      </select>
+      <button style="margin-top: 60px; position: absolute; right: 0px; padding: 10px; margin-right: 40px;" type="submit" (click)="moveVehiclesToZone(selectedZone.value)">Move to zone!</button>
+    </div>
+
+    <div *ngIf='showAddToBatch'>
+      <select #selectedBatch style="margin-top: 120px; position: absolute; right: 0px; padding: 10px; margin-right: 40px;" name="batch">
+        <option *ngFor="let batch of batches" value={{batch.BatchId}}>{{batch.Name}}</option>
+      </select>
+      <button style="margin-top: 160px; position: absolute; right: 0px; padding: 10px; margin-right: 40px;" type="submit" (click)="addVehiclesToBatch(selectedBatch.value)">Add to batch!</button>
+    </div>
+  </table>
+</section>

@@ -1,0 +1,83 @@
+body {
+    overflow: hidden;
+}
+
+/* BR Table */
+table {
+    width: 100%;
+}
+
+table th {
+    font-size: 1.3em;
+    color: #173358;
+}
+
+table th.actions {
+    font-size: 1em;
+    font-weight: 400;
+    width: 150px;
+    text-align: center;
+}
+
+table tbody tr {
+    border: 1px solid #d2d2d2;
+    cursor: pointer;
+}
+
+.tr-details {
+    border: none;
+    color: #3362a0;
+}
+
+.tr-details:hover {
+    background: white;
+}
+
+.tr-details table {
+    margin: -1px 0;
+}    
+
+.tr-details > td {
+    padding: 0 20px;   
+}
+
+.tr-details tr {
+    background: #E7E7E7;
+}
+
+.tr-details-subtitle {
+    font-size: 1.3em;
+    padding: 10px 0 5px 20px;
+    color: black;
+}
+
+.separator {
+    height: 25px;
+}
+
+table tbody tr:hover {
+    background: #EEEEEE;
+}    
+
+table tbody td, table th {
+    padding: 10px 20px;
+}
+
+table tbody td.actions {
+    text-align: center;
+    padding-right: 15px;
+}
+
+.chevron {
+    transition: transform 0.3s;
+}
+
+.chevron.chevron-rotate {
+	transform: rotate(-180deg);
+}
+
+section {
+    padding: 30px;
+    height: calc(100vh - 110px);
+    overflow-y: scroll;
+}

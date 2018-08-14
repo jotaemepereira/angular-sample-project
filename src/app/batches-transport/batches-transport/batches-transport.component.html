@@ -1,0 +1,33 @@
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Creator name
+        </th>
+        <th>
+          Vehicles count
+        </th>
+        <th>
+          Add to transport?
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let batch of batches; let i = index">
+      <tr>
+        <td>{{batch.Name}}</td>
+        <td>{{batch.Description}}</td>
+        <td>{{batch.Creator.Name}}</td>
+        <td>{{batch.Vehicles.length}}</td>
+        <td><input type="checkbox" [(ngModel)]="selected[i]"></td>
+      </tr>
+    </tbody>
+    <button style="margin-top: 20px; position: absolute; right: 0px; padding: 10px; margin-right: 40px;" type="submit" (click)="startBatchesTransport()">Start transport!</button>
+  </table>
+</section>

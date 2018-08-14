@@ -1,0 +1,42 @@
+<div class="container">
+    <h1>New user</h1>
+    <form>
+
+      <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="Name"
+              required
+              [(ngModel)]="user.Name" name="name">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Last name</label>
+        <input type="text" class="form-control" id="LastName" [(ngModel)]="user.LastName" name="lastname" required>
+      </div>
+
+      <div class="form-group" *ngIf="!isModify">
+        <label for="description">Username</label>
+        <input type="text" class="form-control" id="Username" [(ngModel)]="user.Username" name="username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Password</label>
+        <input type="password" class="form-control" id="Password" [(ngModel)]="user.Password" name="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Phone</label>
+          <input type="tel" class="form-control" id="Phone" [(ngModel)]="user.Phone" name="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Role</label>
+        <select #selectedBatch>
+          <option *ngFor="let role of roles" value={{role}} [selected]="role == user.RoleDB">{{role}}</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success" (click)="onSubmit(selectedBatch.value)">Submit</button>
+
+    </form>
+</div>

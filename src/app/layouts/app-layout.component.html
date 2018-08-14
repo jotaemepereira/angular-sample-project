@@ -1,0 +1,36 @@
+<div class="wrapper" [ngClass]="{'has-push-right': navActive}">
+
+    <div class="contianer-fluid content">
+        <router-outlet></router-outlet>
+    </div>
+
+    <footer>
+        <div class="company">
+          User: {{username}}
+        </div>
+        <div class="route">
+            {{currentTitle}} <a href="javascript:void(0)" (click)="navActive = !navActive; $event.stopPropagation()">+</a>
+        </div>
+    </footer>
+</div>
+
+<nav class="nav nav-push-right" [ngClass]="{'nav-active': navActive}">
+    <div class="nav-container">
+        <ul>
+            <li *ngIf="rolesValidator.checkOperation('Vehicles')"><a class="nav-link" routerLinkActive="active-link" [routerLink]="['/vehicles']" (click)="navActive = false">Vehicles</a></li>
+            <li *ngIf="rolesValidator.checkOperation('Users')"><a class="nav-link" routerLinkActive="active-link" [routerLink]="['/users']" (click)="navActive = false">Users</a></li>
+            <li *ngIf="rolesValidator.checkOperation('Batches')"><a class="nav-link" routerLinkActive="active-link" [routerLink]="['/batches']" (click)="navActive = false">Batches</a></li>
+            <li *ngIf="rolesValidator.checkOperation('Zones')"><a class="nav-link" routerLinkActive="active-link" [routerLink]="['/zones']" (click)="navActive = false">Zones</a></li>
+            <li *ngIf="rolesValidator.checkOperation('BatchesTransport')"><a class="nav-link" routerLinkActive="active-link" [routerLink]="['/batchesTransport']" (click)="navActive = false">Batches for Transport</a></li>
+            <li *ngIf="rolesValidator.checkOperation('BatchesTransport')"><a class="nav-link" routerLinkActive="active-link" [routerLink]="['/batchTransportFinish']" (click)="navActive = false">Batches on Transport</a></li>
+            <li *ngIf="rolesValidator.checkOperation('Reports')"><a class="nav-link" routerLinkActive="active-link" [routerLink]="['/reportByState']" (click)="navActive = false">Vehicle report by state</a></li>
+            <li *ngIf="rolesValidator.checkOperation('Reports')"><a class="nav-link" routerLinkActive="active-link" [routerLink]="['/reportByVin']" (click)="navActive = false">Vehicle report by VIN</a></li>
+        </ul>
+
+        <div class="nav-spacer"></div>
+
+        <ul>
+          <li><a class="nav-link" routerLinkActive="active-link" (click)="signOut()">Sign Out</a></li>
+        </ul>
+    </div>
+</nav>

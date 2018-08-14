@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Sell car</h1>
+    <form>
+      <div class="form-group">
+        <label for="Name">Buyer name</label>
+        <input type="text" class="form-control" id="Name"
+              required
+              [(ngModel)]="buyerName" name="name">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Buyer phone</label>
+        <input type="tel" class="form-control" id="BuyerPhone" [(ngModel)]="buyerPhone" name="buyer-phone">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Price</label>
+        <input type="number" class="form-control" id="Price" [(ngModel)]="price" name="buyer-phone">
+      </div>
+
+      <button type="submit" class="btn btn-success" (click)="onSell()">Submit</button>
+
+    </form>
+</div>

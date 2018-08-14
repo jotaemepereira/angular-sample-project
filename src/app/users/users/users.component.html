@@ -1,0 +1,52 @@
+<section>
+  <a class="actions" style="float: right;" (click)="createUser()">
+    New user
+    <span class="glyphicon glyphicon-plus"></span>
+  </a>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Last name
+        </th>
+        <th>
+          Username
+        </th>
+        <th>
+          Phone
+        </th>
+        <th>
+          Role
+        </th>
+        <th>
+          Modify
+        </th>
+        <th>
+          Delete
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of users; let i = index">
+      <tr>
+        <td>{{user.Name}}</td>
+        <td>{{user.LastName}}</td>
+        <td>{{user.Username}}</td>
+        <td>{{user.Phone}}</td>
+        <td>{{user.RoleDB}}</td>
+        <td>
+          <button type="button" class="btn btn-warning btn-xs" (click)="modifyUser(i)">
+            <span class="glyphicon glyphicon-pencil"></span> Modify
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger btn-xs" (click)="removeUser(i)">
+            <span class="glyphicon glyphicon-trash"></span> Remove
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

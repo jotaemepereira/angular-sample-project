@@ -1,0 +1,49 @@
+<section>
+  <div class="form-group">
+    <label for="VIN">VIN</label>
+    <input type="text" class="form-control" id="VIN" required [(ngModel)]="vin" name="vin">
+    <button style="margin: 10px;" type="submit" (click)="searchByVin()">Search</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          VIN
+        </th>
+        <th>
+          Brand
+        </th>
+        <th>
+          Model
+        </th>
+        <th>
+          Year
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          Responsible
+        </th>
+        <th>
+          From zone
+        </th>
+        <th>
+          To zone
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let report of reports; let i = index">
+        <td>{{report.Vehicle.VIN}}</td>
+        <td>{{report.Vehicle.Brand}}</td>
+        <td>{{report.Vehicle.Model}}</td>
+        <td>{{report.Vehicle.Year}}</td>
+        <td><b>{{getStatus(report.State)}}</b></td>
+        <td>{{report.Responsible.Username}}</td>
+        <td>{{report.FromZone}}</td>
+        <td>{{report.ToZone}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
